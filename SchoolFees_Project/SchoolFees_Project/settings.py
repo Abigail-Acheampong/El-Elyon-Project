@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'StudentInformation_App',  
+    'Authentication_App',
+    'Payment_App',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +124,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Authentication Redirect Settings
+LOGIN_URL = "login"  # Redirect users to login page if they try to access protected pages
+LOGIN_REDIRECT_URL = "home"  # Redirect to home after login
+LOGOUT_REDIRECT_URL = "about"  # Redirect to about after logout
