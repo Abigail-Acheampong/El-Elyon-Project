@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'StudentInformation_App',  
     'Authentication_App',
     'Payment_App',
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
