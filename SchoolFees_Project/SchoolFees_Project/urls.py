@@ -24,7 +24,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')), # allow to use django built-in authentication views
     path('students/', include('StudentInformation_App.urls')),
     path('payments/', include('Payment_App.urls')),
-    path('api/', include('Fee_App.urls')),
+    path('', include('Fee_App.urls')),
 
 ]
 
