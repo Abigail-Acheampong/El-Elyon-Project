@@ -68,8 +68,3 @@ def make_payment(request):
 @login_required
 def view_receipt(request):
     return render(request, "Authentication_App/view_receipt.html")
-
-# Student Info Page (Restricted to Logged-in Users)
-# @login_required
-# def student_info(request):
-#     return render(request, "/StudentInformation_App/student_list.html")

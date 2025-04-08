@@ -1,34 +1,57 @@
-<!DOCTYPE html>
-<html>
+{% extends 'Authentication_App/base.html' %}
 
-<head>
- <title>Fee List</title>
-</head>
+{% block title %}Fee List{% endblock %}
 
-<body>
- <h1>All Fees</h1>
- <a href="{% url 'add_fee' %}">Add Fee</a>
- <table border="1">
-  <tr>
-   <th>Grade</th>
-   <th>Amount</th>
-   <th>Actions</th>
-  </tr>
-  {% for fee in fees %}
-  <tr>
-   <td>{{ fee.grade }}</td>
-   <td>{{ fee.amount }}</td>
-   <td>
-    <a href="{% url 'edit_fee' fee.pk %}">Edit</a> |
-    <a href="{% url 'delete_fee' fee.pk %}">Delete</a>
-   </td>
-  </tr>
-  {% empty %}
-  <tr>
-   <td colspan="3">No fees found.</td>
-  </tr>
-  {% endfor %}
- </table>
-</body>
+{% block navbar %}
+<nav class="navbar">
+ <div class="nav-left">
+  <a href="{% url 'register_student' %}">Register Student</a>
+  <a href="{% url 'make_payment' %}">Make Payment</a>
+  <a href="{% url 'payment_list' %}">View Payments</a>
+  <a href="{% url 'student_list' %}">View Student Info</a>
+  <a href="{% url 'fee_list' %}"> Manage Fees</a>
+ </div>
+ <div class="nav-right">
+  <input type="text" placeholder="Search..">
+  <button>Search</button>
+  {% if user.is_authenticated %}
+  <form action="{% url 'logout' %}" method="post" style="display: inline;">
+   {% csrf_token %}
+   <button type="submit" style="background: none; border: none; color: white; cursor: pointer;">
+    Logout
+   </button>
+  </form>
+  {% else %}
+  <a href="{% url 'login' %}">Login</a>
+  {% endif %}
+ </div>
+</nav>
+{% endblock %}
 
-</html>
+{% block content %}
+<h1>All Fees</h1>
+<a href="{% url 'add_fee' %}">Add Fee</a>
+<table border="1">
+ <tr>
+  <th>Grade</th>
+  <th>Amount</th>
+  <th>Actions</th>
+ </tr>
+ {% for fee in fees %}
+ <tr>
+  <td>{{ fee.grade }}</td>
+  <td>{{ fee.amount }}</td>
+  <td>
+   <a href="{% url 'edit_fee' fee.pk %}">Edit</a> |
+   <a href="{% url 'delete_fee' fee.pk %}">Delete</a>
+  </td>
+ </tr>
+ {% empty %}
+ <tr>
+  <td colspan="3">No fees found.</td>
+ </tr>
+ {% endfor %}
+</table>
+{% endblock %}
+
+
