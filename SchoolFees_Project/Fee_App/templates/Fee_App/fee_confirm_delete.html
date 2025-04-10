@@ -7,7 +7,7 @@
  <div class="nav-left">
   <a href="{% url 'register_student' %}">Register Student</a>
   <a href="{% url 'make_payment' %}">Make Payment</a>
-  <a href="{% url 'payment_list' %}">View Payments</a>
+  <a href="{% url 'view_receipt' %}">View Receipts</a>
   <a href="{% url 'student_list' %}">View Student Info</a>
   <a href="{% url 'fee_list' %}"> Manage Fees</a>
  </div>
@@ -26,32 +26,6 @@
   {% endif %}
  </div>
 </nav>
-{% endblock %}
-
-{% block content %}
-<h1>All Fees</h1>
-<a href="{% url 'add_fee' %}">Add Fee</a>
-<table border="1">
- <tr>
-  <th>Grade</th>
-  <th>Amount</th>
-  <th>Actions</th>
- </tr>
- {% for fee in fees %}
- <tr>
-  <td>{{ fee.grade }}</td>
-  <td>{{ fee.amount }}</td>
-  <td>
-   <a href="{% url 'edit_fee' fee.pk %}">Edit</a> |
-   <a href="{% url 'delete_fee' fee.pk %}">Delete</a>
-  </td>
- </tr>
- {% empty %}
- <tr>
-  <td colspan="3">No fees found.</td>
- </tr>
- {% endfor %}
-</table>
 {% endblock %}
 
 

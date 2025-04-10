@@ -1,5 +1,5 @@
 {% extends 'Authentication_App/base.html' %}
-
+{% load static %}
 {% block title %}Home - School Fees Receipt Management{% endblock %}
 
 {% block navbar %}
@@ -29,31 +29,77 @@
 {% endblock %}
 
 {% block content %}
-<h1>Welcome to the School Fees Receipt Management System</h1>
-<p>This is the home page. Here, you can manage student payments, view receipts, and access important school financial
- data.</p>
+<style>
+ /* Center alignment for content only */
+ .content-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+ }
 
-<!-- Recent Transactions Section -->
-<h2>Recent Transactions</h2>
-{% if recent_transactions %}
-<table border="1" cellpadding="10">
- <tr>
-  <th>Student Name</th>
-  <th>Amount Paid</th>
-  <th>Payment Date</th>
-  <th>Receipt</th>
- </tr>
- {% for transaction in recent_transactions %}
- <tr>
-  <td>{{ transaction.student.name }}</td>
-  <td>{{ transaction.amount_paid }}</td>
-  <td>{{ transaction.payment_date }}</td>
-  <td><a href="{% url 'view_receipt' %}?id={{ transaction.id }}">View Receipt</a></td>
- </tr>
- {% endfor %}
-</table>
-{% else %}
-<p>No recent transactions available.</p>
-{% endif %}
+ .logo {
+  height: 150px;
+  width: auto;
+  margin: 20px auto;
+  display: block;
+ }
 
+ h1,
+ h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+ }
+
+ table {
+  margin: 20px auto;
+  border-collapse: collapse;
+  width: 90%;
+  text-align: left;
+ }
+
+ th,
+ td {
+  padding: 12px;
+  border: 1px solid #ddd;
+ }
+
+ th {
+  background-color: #3498db;
+  color: white;
+ }
+
+ p {
+  margin: 20px 0;
+  color: #7f8c8d;
+ }
+</style>
+
+<div class="content-container">
+ <h1>Welcome to El-Elyon Learning Centre Fee Platform</h1>
+ <img class="logo" src="{% static 'Authentication_App/images/elyon_badge-removebg-preview.png' %}" alt="School Badge">
+
+ <!-- Recent Transactions Section -->
+ <h2>Recent Transactions</h2>
+ {% if recent_transactions %}
+ <table>
+  <tr>
+   <th>Student Name</th>
+   <th>Amount Paid</th>
+   <th>Payment Date</th>
+   <th>Receipt</th>
+  </tr>
+  {% for transaction in recent_transactions %}
+  <tr>
+   <td>{{ transaction.student.name }}</td>
+   <td>₦{{ transaction.amount_paid }}</td>
+   <td>{{ transaction.payment_date|date:"M d, Y" }}</td>
+   <td><a href="{% url 'view_receipt' %}?id={{ transaction.id }}">View Receipt</a></td>
+  </tr>
+  {% endfor %}
+ </table>
+ {% else %}
+ <p>No recent transactions available.</p>
+ {% endif %}
+</div>
 {% endblock %}

@@ -7,7 +7,7 @@
  <div class="nav-left">
   <a href="{% url 'register_student' %}">Register Student</a>
   <a href="{% url 'make_payment' %}">Make Payment</a>
-  <a href="{% url 'payment_list' %}">View Payments</a>
+  <a href="{% url 'view_receipt' %}">View Receipts</a>
   <a href="{% url 'student_list' %}">View Student Info</a>
   <a href="{% url 'fee_list' %}"> Manage Fees</a>
  </div>
@@ -27,6 +27,7 @@
  </div>
 </nav>
 {% endblock %}
+
 
 {% block content %}
 <h1>{{ form.instance.pk|yesno:"Edit Fee,Add Fee" }}</h1>

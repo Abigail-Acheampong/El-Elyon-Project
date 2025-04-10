@@ -2,24 +2,57 @@
 {% load static %}
 
 {% block content %}
-<div class="centered-item">
- <span class="bold">EL-ELYON LEARNING CENTRE</span>
+<style>
+ .header-container {
+  text-align: center;
+  margin: 20px 0 30px;
+ }
+
+ .logo {
+  max-height: 80px;
+  margin-bottom: 10px;
+ }
+
+ h1 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+  display: inline-block;
+ }
+
+ .highlight {
+  background: #f8f9fa;
+  padding: 12px;
+  border-left: 4px solid #3498db;
+  margin: 15px 0;
+ }
+
+ .tagline {
+  font-style: italic;
+  color: #7f8c8d;
+  text-align: center;
+ }
+</style>
+
+<div class="header-container">
+ <!-- <img class="logo" src="{% static 'Authentication_App/images/elyon_badge-removebg-preview.png' %}" alt="School Badge"> -->
+ <h1>EduPay Manager</h1>
 </div>
 
-<!-- Main Content -->
-<div class="content">
- <div class="centered-item">
-  <img src="{% static 'Authentication_App/images/elyon_badge-removebg-preview.png' %}" alt="Badge">
- </div>
+<p>A secure system for managing El-Elyon Learning Centre's fee payments, receipts, and student records.</p>
+
+<div class="highlight">
+ <p>Automates fee tracking, generates receipts, and maintains real-time payment histories.</p>
 </div>
 
-<!-- Download Section -->
-<div class="download-section">
- <button class="download-btn">Download <br> <span>Click to download the database</span></button>
- <div class="download-options">
-  <div class="option">👨‍🎓 for <strong>All Students</strong> <br> until present date</div>
-  <div class="option">👨‍🎓💰 for <strong>All Debtors</strong> <br> until present date</div>
-  <div class="option">💵 for <strong>Total Outstanding Fees</strong> <br> until present date</div>
- </div>
-</div>
+<h3>Key Features:</h3>
+<ul>
+ <li>Secure login & role-based access</li>
+ <li>Automated receipts & fee records</li>
+ <li>Real-time balance tracking</li>
+ <li>Student payment history</li>
+</ul>
+
+<p class="tagline">Transparent, efficient school fee management.</p>
+
 {% endblock %}
